@@ -9,21 +9,18 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Build stage running...'
+                echo 'Building Docker image...'
+                sh 'docker build -t my-app .'
             }
         }
 
-        stage('Test') {
+        stage('Run Container') {
             steps {
-                echo 'Test stage running...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy stage placeholder...'
+                echo 'Running container...'
+                sh 'docker rm -f my-app-container || true'
+                sh 'docker run -d --name my-app-container -p 8081:80 my-app'
             }
         }
     }
