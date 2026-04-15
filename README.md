@@ -1,3 +1,2 @@
-# jenkins-demo-1
-This is my second jenkins github project.
+# jenkins-demo-1.
 test webhook
