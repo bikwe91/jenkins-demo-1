@@ -46,4 +46,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline
+            echo 'Pipeline completed successfully.'
+        }
+           faillure {
+            echo 'Pipeline failed. Check console output.'
+         }
+     }
+}
