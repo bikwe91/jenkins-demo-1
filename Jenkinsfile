@@ -48,7 +48,7 @@ pipeline {
         success {
             echo 'Pipeline completed successfully.'
         }
-           faillure {
+           failure {
             echo 'Pipeline failed. Check console output.'
          }
      }
