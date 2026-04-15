@@ -10,19 +10,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    dockerImage = docker.build("bikwe1991/my-app")
-                }
+                sh 'docker build -t my-app .'
             }
         }
 
-        stage('Push to Docker Hub') {
+        stage('Run Container') {
             steps {
-                script {
-                    docker.withRegistry('', 'docker-hub-credentials') {
-                        dockerImage.push('latest')
-                    }
-                }
+                sh 'docker rm -f my-app-container || true'
+                sh 'docker run -d --name my-app-container -p 8081:80 my-app'
             }
         }
     }
